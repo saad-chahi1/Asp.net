@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "add_event_page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add New Event</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" action="Add_event" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="event">Title of the event</label>
+                    <input type="text" name="titre" class="form-control" id="event" placeholder="Enter Title">
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Event Description</label>
+                    <textarea id="inputDescription" name="description" class="form-control" rows="4" placeholder="Enter Description"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="path" class="custom-file-input" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="">Upload</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Event Date</label>
+                    <div class="input-group">
+                        <input type="date" name="event_date" id="start">
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+

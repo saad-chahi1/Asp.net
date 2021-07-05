@@ -1,0 +1,55 @@
+﻿@using PROJET_1.Models
+@using PagedList.Mvc;
+@using PagedList ;
+@model PagedList.IPagedList<PROJET_1.Models.laureat>
+
+@{
+    ViewBag.Title = "Laureat";
+    Layout = "~/Views/Shared/_EvenementLayoutPage.cshtml";
+}
+<!-- End Content -->
+<!-- Start Pricing Horizontal Section -->
+<section class="bg-light pt-sm-0 py-5">
+    <div class="container py-5">
+
+        <h1 class="h2 semi-bold-600 text-center mt-2">Notre Laureats</h1>
+        <div>
+            <label for="cars">Filtre selon la filiere:</label>
+            <h5>
+                @Html.ActionLink("gi", "Laureat", new { sortOrder = "gi", CurrentSort = ViewBag.CurrentSort })
+            </h5>
+            <h5>
+                @Html.ActionLink("gtr", "Laureat", new { sortOrder = "gtr", CurrentSort = ViewBag.CurrentSort })
+            </h5>
+            <h5>
+                @Html.ActionLink("gind", "Laureat", new { sortOrder = "gind", CurrentSort = ViewBag.CurrentSort })
+            </h5>
+            <h5>
+                @Html.ActionLink("gpmc", "Laureat", new { sortOrder = "gpmc", CurrentSort = ViewBag.CurrentSort })
+            </h5>
+        </div>
+        <table class="table">
+            <tr>
+                <td>Nom</td>
+                <td>Prenom</td>
+                <td>Filiere</td>
+                <td>Email</td>
+                <td>Societe actuelle</td>
+                <td>Pays</td>
+                <td>Ville</td>
+            </tr>
+            @foreach (var e in Model)
+            {
+                <tr>
+                    <td>@e.nom</td>
+                    <td>@e.prenom</td>
+                    <td>@e.filiere1.nom</td>
+                    <td>@e.email</td>
+                    <td>@e.societe_actuelle</td>
+                    <td>@e.pays</td>
+                    <td>@e.ville</td>
+                 </tr>
+            }
+        </table>
+    </div>
+</section>

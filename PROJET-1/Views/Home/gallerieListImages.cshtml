@@ -1,0 +1,84 @@
+﻿@using PROJET_1.Models
+@{
+    ViewBag.Title = "gallerieListImages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<gallerie> Gal = ViewData["listgallerie"] as IEnumerable<gallerie>;
+}
+
+<div class="container">
+    <div>
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Events</h3>
+
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 10%">
+                                Type
+                            </th>
+
+                            <th style="width: 10%" >
+                                Date
+                            </th>
+                            <th style="width: 30%">
+                                image
+                            </th>
+                            <th style="width: 8%" class="text-center">
+                                
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in Gal)
+                        {
+                        <tr>
+                            <td>
+                                @e.id
+                            </td>
+                            <td>
+                                @e.type
+                            </td>
+                            <td>
+                                @e.date
+                            </td>
+                            <td>
+                                @if (e.type.Equals("image"))
+                                {
+                                    <img src="@e.path" style="width:50%" />
+                                }
+                                @if (e.type.Equals("video"))
+                                {
+                                    <video src="@e.path" controls style="width:50%" />
+                                }
+
+                            </td>
+
+                            <td class="project-actions text-right">
+                                <a class="btn btn-danger btn-sm" onclick="return confirm('are you sure ?')" href="/Home/delet_gallerie/@e.id">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+
+
+
+
+
+</div>
+

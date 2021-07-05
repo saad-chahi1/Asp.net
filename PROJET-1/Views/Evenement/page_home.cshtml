@@ -1,0 +1,366 @@
+﻿@using PROJET_1.Models
+@using PagedList.Mvc;
+@using PagedList ;
+@model PagedList.IPagedList<PROJET_1.Models.Activite>
+
+@{
+
+    Layout = "~/Views/Shared/_EvenementLayoutPage.cshtml";
+    var i = 0;
+    List<Activite> a = ViewData["newactivite"] as List<Activite>;
+    IPagedList<actualite> aa = ViewData["actualite"] as IPagedList<actualite>;
+}
+
+<div class="banner-wrapper bg-light">
+    <div id="index_banner" class="banner-vertical-center-index container-fluid pt-5">
+
+        <!-- Start slider -->
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                @foreach (Activite e in a)
+                {
+                    if (i == 0)
+                    {
+                        <div class="carousel-item active">
+
+                            <div class="py-5 row d-flex align-items-center">
+                                <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
+                                    <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
+                                        @e.titre
+                                    </h1>
+                                    <p class="banner-body text-muted py-3 mx-0 px-0">
+                                        @e.description
+                                    </p>
+                                    <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="/Evenement/activitie/@e.id" role="button">Voir plus</a>
+                                </div>
+                            </div>
+
+                        </div> i++;
+                    }
+                    else
+                    {
+                        <div class="carousel-item">
+
+                            <div class="py-5 row d-flex align-items-center">
+                                <div class="banner-content col-lg-8 col-8 offset-2 m-lg-auto text-left py-5 pb-5">
+                                    <h1 class="banner-heading h1 text-secondary display-3 mb-0 pb-5 mx-0 px-0 light-300 typo-space-line">
+                                        @e.titre
+                                    </h1>
+                                    <p class="banner-body text-muted py-3 mx-0 px-0">
+                                        @e.description
+                                    </p>
+                                    <a class="banner-button btn rounded-pill btn-outline-primary btn-lg px-4" href="/Evenement/activitie/@e.id" role="button">Voir plus</a>
+                                </div>
+                            </div>
+
+                        </div>}
+
+                }
+            </div>
+            <a class="carousel-control-prev text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
+                <i class='bx bx-chevron-left'></i>
+                <span class="visually-hidden">Previous</span>
+            </a>
+            <a class="carousel-control-next text-decoration-none" href="#carouselExampleIndicators" role="button" data-bs-slide="next">
+                <i class='bx bx-chevron-right'></i>
+                <span class="visually-hidden">Next</span>
+            </a>
+        </div>
+        <!-- End slider -->
+
+    </div>
+</div>
+
+
+<section class="container py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="event-area">
+                    <div class="row">
+                        <div class="col-md-12 pb-3">
+                            <div class="sec-title">
+                                <h4 class="text-uppercase">Actualités</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @foreach (var m in Model)
+                            {
+                                <div class="event-box d-flex">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
+                                                <h2 class="h4 pb-4 typo-space-line">@m.titre</h2>
+                                            </div>
+                                        </div>
+                                        <p class="service-footer col-12 col-lg-10 text-start text-muted px-2">
+                                            @m.description
+                                        </p>
+                                        <!-- End Pricing List -->
+                                        <p><a class="btn mx-auto btn-outline-primary" href="/Evenement/activitie/@m.id">Voir Plus</a></p>
+
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="event-area">
+                    <div class="row">
+                        <div class="col-md-12 pb-3">
+                            <div class="sec-title">
+                                <h4 class="text-uppercase">Evénements</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            @foreach (var m in aa)
+                            {
+                                <div class="event-box d-flex">
+                                    <div class="col-lg-12">
+                                        <div class="row">
+                                            <div class="service-heading col-10 col-lg-9 text-start float-end light-300">
+                                                <h2 class="h4 pb-4 typo-space-line">@m.titre</h2>
+                                            </div>
+                                        </div>
+                                        <p class="service-footer col-12 col-lg-10 text-start text-muted px-2">
+                                            @m.description
+                                        </p>
+                                        <!-- End Pricing List -->
+                                        <p><a class="btn mx-auto btn-outline-primary" href="/Evenement/actualite/@m.id">Voir Plus</a></p>
+
+                                    </div>
+                                </div>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center col-md-12">
+                    <div class="pagination" style="text-align:center">
+                        @Html.PagedListPager(Model, page => Url.Action("page_home", new { page }), new PagedListRenderOptions { LiElementClasses = new string[] { "page-item" } })
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Start About Section -->
+<section class="bg-white py-5" style="background-color: #6266ea !important;">
+    <div class="container my-4">
+
+        <h1 class="creative-heading h2 pb-3">Lauriats de ENSA's</h1>
+
+        <div class="creative-content row py-3">
+            <div class="col-md-5">
+                <p class="text-muted col-lg-8 light-300" style="color: white !important;">
+                    Ils représentent toujours l'image parfaite de notre école
+                </p>
+            </div>
+            <div class="creative-progress col-md-7">
+
+                <div class="row mt-4 mt-sm-2">
+                    <div class="col-6">
+                        <h4 class="h5">Génie informatique</h4>
+                    </div>
+                    <div class="col-6 text-right">@ViewData["nbrLauriatGi"]%</div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: @ViewData["nbrLauriatGi"]%" aria-valuenow="@ViewData["nbrLauriatGi"]" aria-valuemin="0" aria-valuemax="@ViewData["nbrLauriat"]"></div>
+                </div>
+
+                <div class="row mt-4 mt-sm-2">
+                    <div class="col-6">
+                        <h4 class="h5">Génie de reseau et telecom</h4>
+                    </div>
+                    <div class="col-6 text-right">@ViewData["nbrLauriatGtr"]%</div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: @ViewData["nbrLauriatGtr"]%" aria-valuenow="@ViewData["nbrLauriatGtr"]" aria-valuemin="0" aria-valuemax="@ViewData["nbrLauriat"]"></div>
+                </div>
+
+
+                <div class="row mt-4 mt-sm-2">
+                    <div class="col-6">
+                        <h4 class="h5">Génie industrielle</h4>
+                    </div>
+                    <div class="col-6 text-right">@ViewData["nbrLauriatGind"]%</div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: @ViewData["nbrLauriatGind"]%" aria-valuenow="@ViewData["nbrLauriatGind"]" aria-valuemin="0" aria-valuemax="@ViewData["nbrLauriat"]"></div>
+                </div>
+
+                <div class="row mt-4 mt-sm-2">
+                    <div class="col-6">
+                        <h4 class="h5">Génie des procèdes et materiaux céramiques</h4>
+                    </div>
+                    <div class="col-6 text-right">@ViewData["nbrLauriatGpmc"]%</div>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: @ViewData["nbrLauriatGpmc"]%" aria-valuenow="@ViewData["nbrLauriatGpmc"]" aria-valuemin="0" aria-valuemax="@ViewData["nbrLauriat"]"></div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="service-wrapper py-3">
+    <div class="container-fluid pb-3">
+
+    </div>
+
+    <div class="container" style="width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+        <div class="row">
+            <div class="col-md-6" style="flex: 0 0 50%; max-width: 50%;">
+                <div class="about-image">
+                    <img src="~/images/directeur.jpeg" class="main-img" alt="" style=" width: 70%; border-radius: 5px;">
+                    <img src="/assets/images/pattern.png" class="pattern-img" alt="">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="about-content">
+                    <h4 class="about-title" style="color: rgb(24, 43, 73);line-height: 35px;font-weight: 600;margin-bottom: 25px; font-family: Poppins, sans-serif;">
+                        Mot du Directeur : Pr BENKHOUJA Khalil.
+                    </h4>
+                    <p class="about-para" style="font-size: 15px; color: rgb(150, 150, 150); line-height: 25px; margin-bottom: 40px;">
+                        Chers Elèves Ingénieurs, Professeurs, Personnels Administratifs et Partenaires&nbsp;Chers visiteurs du Site Web de l'ENSA Safi
+                        Dans le monde d'aujourd'hui, réussir sa carrière professionnelle est la principale préoccupation de nos chers futurs ingénieurs, mais c'est aussi notre ambition, notre challenge et surtout notre raison d'être....
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="counter-box box1 text-center">
+                                <h3 style="color: rgb(255, 111, 111);">
+                                    <span><strong>+</strong>970</span><i class="las la-plus"></i>
+                                </h3>
+                                <p style="font-size: 14px; color: rgb(150, 150, 150); font-weight: 500;">Etudiants</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="counter-box box2 text-center">
+                                <h3 style=" color: rgb(132, 71, 156);">
+                                    <span><strong>+</strong>50</span><i class="las la-plus"></i>
+                                </h3>
+                                <p style="font-size: 14px; color: rgb(150, 150, 150); font-weight: 500;">Enseignants</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="counter-box box3 text-center">
+                                <h3 style="color: rgb(59, 89, 152);">
+                                    <span><strong>+</strong>248</span><i class="las la-plus"></i>
+                                </h3>
+                                <p style="font-size: 14px; color: rgb(150, 150, 150); font-weight: 500;">Cours</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- End About Section -->
+<section class="banner-bg bg-white py-5 ccc" style="background-color: #6266ea !important;padding-top: 0px !important">
+    <h1 class="h2 semi-bold-600 text-center pt-5" style="padding-bottom: 15px; padding-top: 15px !important;">Nos Partenaires</h1>
+    <div class="container my-0" style=" margin-left: 0px; ">
+        <div class="row text-center">
+            <ul class="list-unstyled" style="display:flex;">
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="0.5s" src="~/images/partenariat/1.png" alt="1" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="1s" src="~/images/partenariat/2.png" alt="2" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="1.5s" src="~/images/partenariat/3.jpg" alt="3" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="2s" src="~/images/partenariat/4.png" alt="4" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="2.5s" src="~/images/partenariat/5.png" alt="5" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="3s" src="~/images/partenariat/6.png" alt="6" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" style="border-radius: 15px:" data-wow-duration="0.5s" data-wow-delay="3s" src="~/images/partenariat/7.png" alt="6" width="126" height="128">
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- Start Section Our Team -->
+<section class="banner-bg bg-white py-5">
+    <h1 class="h2 semi-bold-600 text-center pt-5" style="padding-bottom: 48px;">Statistiques du site</h1>
+    <div class="container my-4">
+        <div class="row text-center">
+
+            <div class="objective col-lg-4">
+                <div class="objective-icon card m-auto py-4 mb-2 mb-sm-4 bg-secondary shadow-lg">
+                    <i class="display-4 bx bxs-bulb text-light"></i>
+                </div>
+                <h2 class="objective-heading h3 mb-2 mb-sm-4 light-300">+@ViewData["nbrEvents"]</h2>
+                <p class="light-300">
+                    Nos Evenements
+                </p>
+            </div>
+
+            <div class="objective col-lg-4 mt-sm-0 mt-4">
+                <div class="objective-icon card m-auto py-4 mb-2 mb-sm-4 bg-secondary shadow-lg">
+                    <i class='display-4 bx bx-revision text-light'></i>
+                </div>
+                <h2 class="objective-heading h3 mb-2 mb-sm-4 light-300">+@ViewData["nbrImages"]</h2>
+                <p class="light-300">
+                    Nos Galeries
+                </p>
+            </div>
+
+            <div class="objective col-lg-4 mt-sm-0 mt-4">
+                <div class="objective-icon card m-auto py-4 mb-2 mb-sm-4 bg-secondary shadow-lg">
+                    <i class="display-4 bx bxs-select-multiple text-light"></i>
+                </div>
+                <h2 class="objective-heading h3 mb-2 mb-sm-4 light-300">+@ViewData["nbrLauriat"]</h2>
+                <p class="light-300">
+                    Laureats
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<style>
+    .page-item {
+        display: inline-block;
+    }
+
+        .page-item a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+        }
+
+        .page-item.active a {
+            background-color: dodgerblue;
+            color: white;
+            border-radius: 5px;
+        }
+
+            .page-item a:hover:not(.active) {
+                background-color: #ddd;
+                border-radius: 5px;
+            }
+    .imgequipe {
+        width: 30px;
+        height: 30px;
+    }
+</style>

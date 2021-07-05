@@ -1,0 +1,59 @@
+﻿@using PROJET_1.Models
+@{
+    ViewBag.Title = "modifier_actualite_page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    actualite e = ViewData["modifie"] as actualite;
+
+}
+
+<div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Modifier actualite</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" action="/Home/modifier_actualite" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="event">ID de l'actualite</label>
+                    <input type="number" name="id" class="form-control" id="event" value="@e.id">
+                </div>
+                <div class="form-group">
+                    <label for="event">Titre de l'actualite</label>
+                    <input type="text" name="titre" class="form-control" id="event" value="@e.titre">
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Description</label>
+                    <textarea id="inputDescription" name="description" class="form-control" rows="4">@e.description</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Piece joint</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="path" class="custom-file-input" value="@e.piece_joint" id="exampleInputFile">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="">Upload</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Date</label>
+                    <div class="input-group">
+                        <input type="date" name="event_date" value="@e.date.Date"  id="start">
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+

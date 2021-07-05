@@ -1,0 +1,233 @@
+﻿@{
+    ViewBag.Title = "Laureats";
+}
+
+@model  PROJET_1.Models.laureat
+
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+
+<div class="container">
+
+
+
+    <p>
+        <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#lauretModal">ADD new Laureat</a>
+    </p>
+
+    <div class="modal fade" id="lauretModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Laureat Information</h2>
+                </div>
+                <div class="modal-body">
+                    <form id="laureatAdd">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="Nom">Nom</label>
+                                <input type="text" name="Nom" class="form-control" id="nom" placeholder="Enter Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="Prenom">Prenom</label>
+                                <input type="text" name="Prenom" class="form-control" id="prenom" placeholder="Enter Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="Email">Email</label>
+                                <input type="text" name="Email" class="form-control" id="Email" placeholder="Enter Mail">
+                            </div>
+                            <div class="form-group">
+
+                                <label class="control-label col-lg-1 md-2">
+                                    Filiere
+                                </label>
+                                <div>
+                                    @Html.DropDownListFor(x => x.filiere, ViewBag.FiliereList as SelectList, "Choisir une Filiére", new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="societe_actuelle">Societe Actuelle</label>
+                                <input type="text" name="societe_actuelle" class="form-control" id="societe_actuelle" placeholder="Enter societe">
+                            </div>
+                            <div class="form-group">
+                                <label for="salaire">Salaire</label>
+                                <input type="text" name="salaire" class="form-control" id="salaire" placeholder="Enter Salary">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="text" name="age" class="form-control" id="age" placeholder="Enter Salary">
+                            </div>
+                            <div class="form-group">
+                                <label for="bio">Bio</label>
+                                <textarea id="bio" name="bio" class="form-control" rows="4" placeholder="...."></textarea>
+                            </div>
+
+
+                        </div>
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <a href="#" id="btnSave" class="btn btn-primary">Ajouter le laureat</a>
+                            <a href="#" id="btnCancel" class="btn btn-danger">Annuler</a>
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer"></div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Laureats</h3>
+
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 8%">
+                                Nom
+                            </th>
+
+                            <th style="width: 8%">
+                                Prenom
+                            </th>
+
+
+                            <th style="width: 10%">
+                                Email
+                            </th>
+                            <th style="width: 8%">
+                                Filiere
+                            </th>
+                            <th style="width: 15%">
+                                Societe Actuelle
+                            </th>
+                            <th style="width: 10%">
+                                Salaire
+                            </th>
+                            <th style="width: 7%">
+                                Age
+                            </th>
+
+
+
+                            <th style="width:25%">
+
+                            </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in ViewBag.Lauret as List<PROJET_1.Models.laureat>)
+                        {
+                            <tr>
+                                <td>
+                                    @e.id
+                                </td>
+                                <td>
+
+                                    @e.nom
+
+                                </td>
+                                <td>
+
+                                    @e.prenom
+
+                                </td>
+
+                                <td>
+
+                                    @e.email
+
+                                </td>
+
+
+                                <td>
+
+                                    @e.filiere1.nom
+
+
+
+                                </td>
+                                <td>
+
+                                    @e.societe_actuelle
+
+                                </td>
+                                <td>
+
+                                    @e.salaire
+
+                                </td>
+                                <td>
+
+                                    @e.age
+
+                                </td>
+
+                                <td class="project-actions text-right">
+                                    <a class="btn btn-danger btn-sm" href="/Home/delete_laureat/@e.id">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Del
+                                    </a>
+
+                                    <a class="btn btn-info btn-sm" href="#">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+
+                                    <a class="btn btn-secondary btn-sm" href="#">
+                                        <i class="fas fa-info-circle">
+                                        </i>
+                                        Bio
+                                    </a>
+
+                                </td>
+
+
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $("#btnSave").click(function () {
+            var laureatData = $("#laureatAdd").serialize();
+            $.ajax(
+
+                {
+                    type: "POST",
+                    url: "/Home/Add_Laureat",
+                    data: laureatData,
+                    success: function () {
+                        window.location.href ="/Home/Laureats"
+                    }
+
+                })
+        })
+    })
+</script>*/
+

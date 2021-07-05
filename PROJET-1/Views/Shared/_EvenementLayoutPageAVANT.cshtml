@@ -1,0 +1,197 @@
+﻿@using PROJET_1.Models
+@{
+    int i = 0;
+    int j = 0;
+}
+@model IEnumerable<PROJET_1.Models.Activite>
+<head>
+    <link href="@Url.Content("~/Content/font-awesome.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/bootstrap.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/col-offset-right.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/hover-min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/animate.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/Main.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/media.min.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.Content("~/Content/color-one.min.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="@Url.Content("/Scripts/jquery-1.12.4.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/bootstrap.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/custom.js")"></script>
+    <script type="text/javascript" src="@Url.Content("/Scripts/wow.min.js")"></script>
+</head>
+
+
+<!-- Start Preloader -->
+<div class="preloader">
+    <div class="spinner">
+        <div class="cube1"></div>
+        <div class="cube2"></div>
+    </div>
+</div>
+<!-- End Preloader -->
+<!-- Start Nav-bar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand hvr-push" href="#">
+                ENSA<span>SAFI</span>
+            </a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="/Evenement/page_home">Home</a></li>
+                <li><a href="/Evenement/events_img">Gallerie</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="/BDE/Login">Espace BDE</a></li>
+                <li><a href="/Evenement/Login">Espace ADMIN</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!-- Start Nav-bar -->
+@RenderBody()
+
+<!-- End Our Clients Section -->
+<!-- Start Our Clients Section -->
+<div class="clients" style="background-color:white;">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12"><div class="text-center"><h1>Nos Partenaires</h1></div></div>
+            <ul class="list-unstyled">
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" data-wow-duration="0.5s" data-wow-delay="0.5s" src="~/images/partenariat/1.png" alt="1" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" data-wow-duration="0.5s" data-wow-delay="1s" src="~/images/partenariat/2.png" alt="2" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" data-wow-duration="0.5s" data-wow-delay="1.5s" src="~/images/partenariat/3.jpg" alt="3" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" data-wow-duration="0.5s" data-wow-delay="2s" src="~/images/partenariat/4.png" alt="4" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" data-wow-duration="0.5s" data-wow-delay="2.5s" src="~/images/partenariat/5.png" alt="5" width="126" height="128">
+                </li>
+                <li class="col-md-2 col-xs-4">
+                    <img class="img-responsive center-block wow animate__bounceIn" data-wow-duration="0.5s" data-wow-delay="3s" src="~/images/partenariat/6.png" alt="6" width="126" height="128">
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Our Clients Section -->
+<!-- Start Footer -->
+<section class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-4">
+                <img src="~/images/partenariat/ENSAS LOGO.png" width="300" />
+                <p class="text-justify">Université Cadi Ayyad Ecole Nationale des Sciences Appliquées</p>
+                <ul class="list-unstyled">
+                    <li style="margin-bottom: 12px;">
+                        <i class="las la-map-marker"></i>Route Sidi Bouzid BP 63, 46000 - Safi, Maroc
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <i class="las la-envelope"></i>ensasafi@gmail.com
+                    </li>
+                    <li style="margin-bottom: 12px;">
+                        <i class="las la-phone"></i>+212 656200007
+                    </li>
+                </ul>
+                <ul class="social list-unstyled">
+                    <li>
+                        <a href="#">
+                            <img src="~/images/footer-social/fp.svg" alt="fb" class="img-responsive">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="~/images/footer-social/twitter.svg" alt="fb" class="img-responsive">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <img src="~/images/footer-social/instagram.svg" alt="fb" class="img-responsive">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-6 col-lg-4">
+                <h3 class="h2">Les Dernieres Activités</h3>
+                <!-- Note Media -->
+                @foreach (var e in Model)
+                {
+                    if (j == 2)
+                    {
+                        break;
+                    }
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img src="@e.piece_joint" alt="@j" class="img-responsive media-object">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4>@e.date.ToString("dd/MM/yyyy")</h4>
+                            <p style=" overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">
+                                @e.description
+                            </p>
+                        </div>
+                    </div>
+                    j++;
+                }
+
+
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <h3 class="h2">Nos Galleries</h3>
+                <div class="works">
+                    @foreach (var e in Model)
+                    {
+                        if (i == 2)
+                        {
+                            break;
+                        }
+                        <a href="#">
+                            <img src="@e.piece_joint" alt="@i" class="responsive-img img-thumbnail">
+                        </a>
+                        i++;
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copy text-center">
+        Copyright &copy; 2020 <a href="https://www.facebook.com" target="_blank">ENSA SAFI</a>
+    </div>
+</section>
+<!-- End Footer -->
+<!-- Scroll To Top -->
+<div class="scroll-top">
+    <i class="fa fa-fighter-jet fa-2x" aria-hidden="true"></i>
+    <img src="~/images/122-1223559_flames-clipart-revival-transparent-background-fire-png.png" alt="fire">
+</div>
+<style>
+
+    .clients li img {
+        height: 20%;
+        -webkit-filter: none;
+        filter: none;
+        margin-top: 15px;
+        margin-bottom: 15px;
+        opacity: .6;
+        transition: 1s;
+        border-radius: 5px;
+        width: 50%;
+    }
+</style>

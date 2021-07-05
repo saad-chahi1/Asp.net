@@ -1,0 +1,66 @@
+﻿@model PROJET_1.Models.Activite
+@{ ViewBag.Title = "add_gallerie_page";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div>
+
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add new gallerie</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" action="Add_gal" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="event">Type of Media</label>
+                    <select name="titr" class="form-control">
+                        <option value="image">image</option>
+                        <option value="video">video</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="inputDescription">Event ID</label>
+                    <div>
+                        @Html.DropDownListFor(x => x.titre, ViewBag.ActivitieList as SelectList, "Choisir une Activite", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Fichier Media</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" name="path" class="custom-file-input" id="exampleInputFile" onchange="ValidateSize(this)">
+                            <label class="custom-file-label" for="exampleInputFile">Choose file</label>
+                        </div>
+                        <div class="input-group-append">
+                            <span class="input-group-text" id="">Upload</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">Event Date</label>
+                    <div class="input-group">
+                        <input type="date" name="event_date" id="start">
+                    </div>
+                </div>
+
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    function ValidateSize(file) {
+        var FileSize = file.files[0].size / 1024 / 1024; // in MB
+        if (FileSize > 2) {
+            alert('File size exceeds 2 MB');
+            // $(file).val(''); //for clearing with Jquery
+        } else {
+
+        }
+    }
+</script>

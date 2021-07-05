@@ -1,0 +1,90 @@
+﻿
+@{
+    ViewBag.Title = "Events";
+    Layout = "~/Views/Shared/_BDELayoutPage.cshtml";
+
+}
+@model IEnumerable<PROJET_1.Models.Activite>
+<div class="container">
+
+
+
+    <div>
+        <div class="card card-danger">
+            <div class="card-header">
+                <h3 class="card-title">Events</h3>
+
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th style="width: 1%">
+                                ID
+                            </th>
+                            <th style="width: 20%">
+                                Event Title
+                            </th>
+
+                            <th style="width: 40%">
+                                Event Description
+                            </th>
+
+
+                            <th style="width: 8%" class="text-center">
+                                Status
+                            </th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var e in Model)
+                                    {
+                        <tr>
+                            <td>
+                                @e.id
+                            </td>
+                            <td>
+                                <a>
+                                    @e.titre
+                                </a>
+                                <br />
+                                <small>
+                                    @e.date
+                                </small>
+                            </td>
+
+                            <td>
+                                <small>
+                                    @e.description
+                                </small>
+                            </td>
+
+
+                            <td class="project-state">
+                                @if (e.state == "enable")
+                                {
+                                    <span class="badge badge-success">@e.state</span>
+                                }
+                                else
+                                {
+                                    <span class="badge badge-danger">@e.state</span>
+                                }
+
+                            </td>
+                            
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.card-body -->
+        </div>
+    </div>
+
+
+   
+
+
+</div>
+
