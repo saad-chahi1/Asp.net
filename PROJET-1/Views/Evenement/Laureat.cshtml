@@ -15,18 +15,25 @@
         <h1 class="h2 semi-bold-600 text-center mt-2">Notre Laureats</h1>
         <div>
             <label for="cars">Filtre selon la filiere:</label>
-            <h5>
-                @Html.ActionLink("gi", "Laureat", new { sortOrder = "gi", CurrentSort = ViewBag.CurrentSort })
-            </h5>
-            <h5>
-                @Html.ActionLink("gtr", "Laureat", new { sortOrder = "gtr", CurrentSort = ViewBag.CurrentSort })
-            </h5>
-            <h5>
-                @Html.ActionLink("gind", "Laureat", new { sortOrder = "gind", CurrentSort = ViewBag.CurrentSort })
-            </h5>
-            <h5>
-                @Html.ActionLink("gpmc", "Laureat", new { sortOrder = "gpmc", CurrentSort = ViewBag.CurrentSort })
-            </h5>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+                <a href="@Url.Action("Laureat", new { sortOrder = "gi", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-primary" role="button" aria-pressed="true">
+                    GI
+                </a>
+
+                <a href="@Url.Action("Laureat", new { sortOrder = "gtr", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-secondary" role="button" aria-pressed="true">
+                    GTR
+                </a>
+
+                <a href="@Url.Action("Laureat", new { sortOrder = "gind", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-success" role="button" aria-pressed="true">
+                    GINDUS
+                </a>
+
+                <a href="@Url.Action("Laureat", new { sortOrder = "gpmc", CurrentSort = ViewBag.CurrentSort })" class="btn btn-outline-warning" role="button" aria-pressed="true">
+                    GPMC
+                </a>
+
+            </div>
+            
         </div>
         <table class="table">
             <tr>
